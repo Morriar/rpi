@@ -13,7 +13,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import sr595
+import wiringPi
 
 if args.is_empty or args.length > 2 then
 	print "usage:"
@@ -31,7 +31,7 @@ var nb_pins = 8
 var ser_pin = 7
 var rclk_pin = 6
 var srclk_pin = 5
-var sr = new ShiftRegister(nb_pins, ser_pin, rclk_pin, srclk_pin)
+var sr = new SR595(nb_pins, ser_pin, rclk_pin, srclk_pin)
 
 # set all registers to 0
 if args.first == "clear" then
@@ -47,5 +47,5 @@ else
 		sr.write(args.first.to_i, false)
 	else
 		sr.write(args.first.to_i, true)
-	end	
+	end
 end
